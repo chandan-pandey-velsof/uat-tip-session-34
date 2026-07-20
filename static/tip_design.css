@@ -1,0 +1,275 @@
+/* TIP Design System — extracted from TriangleIP React frontend */
+/* Font: Be Vietnam (Google Fonts) */
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap');
+
+/* ── Design Tokens ─────────────────────────────────────────── */
+:root {
+  --tip-primary:        #0052cc;
+  --tip-primary-light:  rgba(0, 82, 204, 0.10);
+  --tip-primary-dark:   #003d99;
+  --tip-secondary:      #6b7280;
+
+  --tip-success:        #52c41a;
+  --tip-warning:        #faad14;
+  --tip-error:          #ff4d4f;
+
+  --tip-bg-default:     #F4F7FE;
+  --tip-bg-paper:       #FFFFFF;
+  --tip-border:         rgba(0, 0, 0, 0.12);
+  --tip-divider:        rgba(0, 0, 0, 0.06);
+
+  --tip-text-primary:   rgb(17, 24, 39);
+  --tip-text-secondary: rgb(107, 114, 128);
+  --tip-text-disabled:  rgb(149, 156, 169);
+
+  --tip-card-radius:    16px;
+  --tip-btn-radius:     6px;
+  --tip-card-shadow:    0 0 5px 5px rgba(0,0,0,0.03);
+  --tip-card-shadow-hover: 0 4px 16px rgba(0,0,0,0.10);
+
+  --tip-font:           'Be Vietnam Pro', 'Be Vietnam', sans-serif;
+  --tip-font-sm:        12px;
+  --tip-font-base:      14px;
+  --tip-font-lg:        16px;
+}
+
+/* ── Reset & Base ───────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--tip-font);
+  font-size: var(--tip-font-base);
+  color: var(--tip-text-primary);
+  background: var(--tip-bg-default);
+  line-height: 1.35;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 { font-size: 22px; font-weight: 600; }
+h2 { font-size: 20px; font-weight: 500; }
+h3 { font-size: 18px; font-weight: 500; }
+h4 { font-size: 16px; font-weight: 500; }
+h5 { font-size: 14px; font-weight: 500; }
+h6 { font-size: 12px; font-weight: 500; }
+p  { font-size: 14px; font-weight: 400; color: var(--tip-text-secondary); }
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: #d3d3d3; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #bbb; }
+
+/* ── Layout helpers ─────────────────────────────────────────── */
+.tip-page {
+  min-height: 100vh;
+  background: var(--tip-bg-default);
+  padding: 24px;
+}
+
+.tip-page-title {
+  font-size: var(--tip-font-lg);
+  font-weight: 600;
+  color: var(--tip-text-primary);
+  margin-bottom: 16px;
+  display: inline-block;
+}
+
+/* ── Card ───────────────────────────────────────────────────── */
+.tip-card {
+  background: var(--tip-bg-paper);
+  border-radius: var(--tip-card-radius);
+  box-shadow: var(--tip-card-shadow);
+  padding: 24px;
+  border: 1px solid var(--tip-divider);
+}
+
+.tip-card-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--tip-text-primary);
+  margin-bottom: 8px;
+}
+
+.tip-card-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--tip-primary);
+}
+
+.tip-card:hover {
+  box-shadow: var(--tip-card-shadow-hover);
+  transition: box-shadow 0.2s ease;
+}
+
+/* ── Stat card row ──────────────────────────────────────────── */
+.tip-stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+/* ── Table ──────────────────────────────────────────────────── */
+.tip-table-wrap {
+  background: var(--tip-bg-paper);
+  border-radius: var(--tip-card-radius);
+  box-shadow: var(--tip-card-shadow);
+  overflow: hidden;
+  border: 1px solid var(--tip-divider);
+}
+
+.tip-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--tip-font-base);
+}
+
+.tip-table thead tr {
+  background: var(--tip-bg-default);
+}
+
+.tip-table th {
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 600;
+  font-size: var(--tip-font-sm);
+  color: var(--tip-text-primary);
+  border-bottom: 1px solid var(--tip-divider);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.tip-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--tip-divider);
+  color: var(--tip-text-primary);
+}
+
+.tip-table tbody tr:last-child td { border-bottom: none; }
+.tip-table tbody tr:hover { background: var(--tip-primary-light); }
+
+/* ── Buttons ────────────────────────────────────────────────── */
+.tip-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  border-radius: var(--tip-btn-radius);
+  font-family: var(--tip-font);
+  font-size: var(--tip-font-base);
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+  line-height: 1.5;
+}
+
+.tip-btn-primary {
+  background: var(--tip-primary);
+  color: #fff;
+  border-color: var(--tip-primary);
+}
+.tip-btn-primary:hover {
+  background: var(--tip-primary-dark);
+  border-color: var(--tip-primary-dark);
+}
+
+.tip-btn-outline {
+  background: transparent;
+  color: var(--tip-primary);
+  border-color: var(--tip-primary);
+}
+.tip-btn-outline:hover {
+  background: var(--tip-primary-light);
+}
+
+.tip-btn-ghost {
+  background: transparent;
+  color: var(--tip-text-secondary);
+  border-color: var(--tip-border);
+}
+.tip-btn-ghost:hover {
+  background: var(--tip-bg-default);
+  color: var(--tip-text-primary);
+}
+
+/* ── Form inputs ────────────────────────────────────────────── */
+.tip-input, .tip-select, .tip-textarea {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--tip-border);
+  border-radius: var(--tip-btn-radius);
+  font-family: var(--tip-font);
+  font-size: var(--tip-font-base);
+  color: var(--tip-text-primary);
+  background: var(--tip-bg-paper);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.tip-input:focus, .tip-select:focus, .tip-textarea:focus {
+  border-color: var(--tip-primary);
+  box-shadow: 0 0 0 2px var(--tip-primary-light);
+}
+.tip-input::placeholder { color: var(--tip-text-disabled); }
+
+.tip-form-item { margin-bottom: 16px; }
+.tip-label {
+  display: block;
+  font-size: var(--tip-font-sm);
+  font-weight: 500;
+  color: var(--tip-text-primary);
+  margin-bottom: 6px;
+}
+
+/* ── Badge / Tag ────────────────────────────────────────────── */
+.tip-tag {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: var(--tip-font-sm);
+  font-weight: 500;
+}
+.tip-tag-success { background: #f6ffed; color: #52c41a; border: 1px solid #b7eb8f; }
+.tip-tag-warning { background: #fffbe6; color: #d46b08; border: 1px solid #ffe58f; }
+.tip-tag-error   { background: #fff2f0; color: #ff4d4f; border: 1px solid #ffccc7; }
+.tip-tag-default { background: #f5f5f5; color: #595959; border: 1px solid #d9d9d9; }
+.tip-tag-primary { background: var(--tip-primary-light); color: var(--tip-primary); border: 1px solid rgba(0,82,204,0.2); }
+
+/* ── Top nav bar ─────────────────────────────────────────────── */
+.tip-navbar {
+  background: var(--tip-bg-paper);
+  border-bottom: 1px solid var(--tip-divider);
+  padding: 0 24px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.tip-navbar-brand {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--tip-primary);
+  text-decoration: none;
+}
+
+/* ── Utility ────────────────────────────────────────────────── */
+.d-flex   { display: flex !important; }
+.d-grid   { display: grid !important; }
+.gap-1    { gap: 4px; }
+.gap-2    { gap: 8px; }
+.gap-3    { gap: 12px; }
+.gap-4    { gap: 16px; }
+.align-center   { align-items: center !important; }
+.justify-between { justify-content: space-between !important; }
+.justify-end    { justify-content: flex-end !important; }
+.mt-1 { margin-top: 4px; }   .mt-2 { margin-top: 8px; }
+.mt-3 { margin-top: 12px; }  .mt-4 { margin-top: 16px; }
+.mb-1 { margin-bottom: 4px; } .mb-2 { margin-bottom: 8px; }
+.mb-3 { margin-bottom: 12px; } .mb-4 { margin-bottom: 16px; }
+.text-primary   { color: var(--tip-primary) !important; }
+.text-secondary { color: var(--tip-text-secondary) !important; }
+.text-success   { color: var(--tip-success) !important; }
+.text-error     { color: var(--tip-error) !important; }
+.fw-500 { font-weight: 500; } .fw-600 { font-weight: 600; }
+.w-100  { width: 100%; }
