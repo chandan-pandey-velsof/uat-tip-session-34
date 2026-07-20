@@ -55,13 +55,13 @@
         return () => document.removeEventListener('mousedown', handleClick);
       }, []);
 
-      // Autocomplete with debounce
+      // Autocomplete with debounce - fires from 1 character onward
       function handleInputChange(e) {
         const val = e.target.value;
         setQuery(val);
         setSelectedName('');
         if (debounceRef.current) clearTimeout(debounceRef.current);
-        if (val.trim().length < 2) {
+        if (val.trim().length < 1) {
           setSuggestions([]);
           setShowDropdown(false);
           return;
